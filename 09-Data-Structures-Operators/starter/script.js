@@ -29,7 +29,20 @@ const restaurant = {
       close: 24,
     },
   },
+
+  orderDelivery: function ({ starterIndex, mainIndex, address, time }) {
+    console.log(`Order received! ${this.starterMenu[starterIndex]} and 
+    ${this.mainMenu[mainIndex]} will be delivered at ${address} at ${time}`);
+  },
 };
+
+//
+restaurant.orderDelivery({
+  time: '22:30',
+  address: '143, Rue Jean Desprez',
+  mainIndex: 2,
+  starterIndex: 2,
+});
 
 // Learn how to skip values when destructuring array
 const [main, , secondary] = restaurant.categories;
@@ -55,3 +68,31 @@ console.log(first, a, b);
 // Default values
 const [p = 1, q = 1, r = 1] = [8, 9];
 console.log(p, q, r);
+
+// Object Destructuring
+const { name, categories, openingHours: loli } = restaurant;
+console.log(name, categories, loli);
+
+// Get the objects with different names
+const {
+  name: restaurantName,
+  categories: kindOfFood,
+  openingHours: hours,
+} = restaurant;
+console.log(restaurantName, kindOfFood, hours);
+
+// Get the objects but with default values if non-existed
+const { menu: restaurantMenu = [], location: restaurantLocation = '' } =
+  restaurant;
+console.log(restaurantMenu, restaurantLocation);
+
+// Nested Objects
+// Retrieve 'fri' from 'openingHours' in restaurant
+
+// From openingHours take 'fri'-> From 'fri' take open and close
+const {
+  openingHours: {
+    fri: { open, close },
+  },
+} = restaurant;
+console.log(open, close);
