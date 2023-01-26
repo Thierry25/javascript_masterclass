@@ -11,6 +11,9 @@ const restaurant = {
   categories: ['Italian', 'Pizzeria', 'Vegetarian', 'Organic'],
   starterMenu: ['Focaccia', 'Bruschetta', 'Garlic Bread', 'Caprese Salad'],
   mainMenu: ['Pizza', 'Pasta', 'Risotto'],
+  order: function (starterIndex, mainIndex) {
+    return [this.starterMenu[starterIndex], this.mainMenu[mainIndex]];
+  },
 
   openingHours: {
     thu: {
@@ -28,10 +31,14 @@ const restaurant = {
   },
 };
 
+// Learn how to skip values when destructuring array
 const [main, , secondary] = restaurant.categories;
 console.log(main, secondary);
 
+//
 const arr = ['Daniel', 'Thierry', 'Marcelin'];
+// Learn how to switch two variables without the use of a temp variable
+// [] on the left -> Destructure an array. Is expecting the right side to be an array
 let [, firstName, lastName] = arr;
 console.log(firstName, lastName);
 [firstName, lastName] = [lastName, firstName];
