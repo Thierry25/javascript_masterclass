@@ -28,7 +28,7 @@ foo();
 function lol() {
   console.log(this); // -> should be undefined
   const test = () => {
-    console.log(this); // -> should also be undefined, because it is wihtin the scope of the function
+    console.log(this); // -> should also be undefined, because it is within the scope of the function
   };
   test();
 }
@@ -41,3 +41,17 @@ const test2 = () => {
 };
 
 test2();
+
+// Primitive Types vs Reference Types
+let lastName = 'Miller';
+let oldLastName = lastName;
+lastName = 'Valeverde';
+
+const thie_rry = {
+  firstName: 'Thierry',
+  lastName: 'Marcelin',
+  age: 26,
+};
+
+const marriedThierry = thie_rry;
+marriedThierry.firstName = 'Lol';
