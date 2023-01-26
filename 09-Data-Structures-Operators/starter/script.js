@@ -34,6 +34,12 @@ const restaurant = {
     console.log(`Order received! ${this.starterMenu[starterIndex]} and 
     ${this.mainMenu[mainIndex]} will be delivered at ${address} at ${time}`);
   },
+
+  orderPasta: function (ing1, ing2, ing3) {
+    console.log(
+      `Here is your wonderful Pasta with ${ing1}, ${ing2} and ${ing3}`
+    );
+  },
 };
 
 //
@@ -96,3 +102,38 @@ const {
   },
 } = restaurant;
 console.log(open, close);
+
+// NEW-SECTION -> Spread operator
+// We want to add two new elements at the start of an array
+const array = [7, 8, 9];
+const newArray = [1, 2, ...array];
+console.log(newArray);
+
+const newMenu = [...restaurant.mainMenu, 'Duri Kole', 'Pwa', 'Mais'];
+console.log(newMenu);
+
+// Copy array:
+const mainMenuCopy = [...restaurant.mainMenu];
+const wholeMenu = [...restaurant.starterMenu, ...restaurant.mainMenu];
+console.log(wholeMenu);
+
+const str = 'Thierry';
+const testIng = [...str, 'l', 'o', 'l'];
+console.log(testIng);
+
+// - Real-world Example
+const ingredients = [
+  // prompt("Let's build a wonderful pasta! Ingredient 1?"),
+  // prompt('Ingredient 2?'),
+  // prompt('Ingredient 3?'),
+];
+
+restaurant.orderPasta(...ingredients);
+
+// Objects
+const newRestaurant = { foundedIn: 2018, founder: 'Thierry', ...restaurant };
+console.log(newRestaurant);
+
+// SPREAD, because on the right side of =
+const bl = [1, 2, 3, ...[7, 8, 9]];
+console.log(bl);
