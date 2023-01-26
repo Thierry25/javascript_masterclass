@@ -40,8 +40,14 @@ const restaurant = {
       `Here is your wonderful Pasta with ${ing1}, ${ing2} and ${ing3}`
     );
   },
+
+  orderPizza: function (mainIngredient, ...otherIngredients) {
+    console.log(mainIngredient);
+    console.log(otherIngredients);
+  },
 };
 
+restaurant.orderPizza('beef', 'peperoni', 'cheese');
 //
 restaurant.orderDelivery({
   time: '22:30',
@@ -137,3 +143,26 @@ console.log(newRestaurant);
 // SPREAD, because on the right side of =
 const bl = [1, 2, 3, ...[7, 8, 9]];
 console.log(bl);
+
+// 1) Destructuring
+// REST, because on the left side of =
+const [ar, , br, ...others] = [1, 3, 5, 7, 9, 11, 13, 15, 17, 19];
+console.log(ar);
+console.log(br);
+console.log(others);
+
+// Take out Saturday from the openingHours into it's own variable an add the others
+// in an array called 'weekDays'
+
+const { sat, ...weekdays } = restaurant.openingHours;
+console.log(sat, weekdays);
+
+// 2) Functions
+const multiply = (...numbers) => {
+  return numbers.reduce((num1, num2) => {
+    return num1 * num2;
+  }, 1);
+};
+
+console.log(multiply(2, 3, 4, 5, 6));
+console.log(multiply(2, 3));
