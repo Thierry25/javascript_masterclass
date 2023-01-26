@@ -27,3 +27,12 @@ const restaurant = {
     },
   },
 };
+
+const [main, , secondary] = restaurant.categories;
+console.log(main, secondary);
+
+const arr = ['Daniel', 'Thierry', 'Marcelin'];
+let [, firstName, lastName] = arr;
+console.log(firstName, lastName);
+[firstName, lastName] = [lastName, firstName];
+console.log(firstName, lastName);
