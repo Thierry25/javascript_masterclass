@@ -166,3 +166,16 @@ const multiply = (...numbers) => {
 
 console.log(multiply(2, 3, 4, 5, 6));
 console.log(multiply(2, 3));
+
+console.log('------------OR--------------');
+// NEW-SECTION
+// Short-Circuiting || and &&
+restaurant.numGuests = 20;
+// || operator will output the first truthy value that it finds
+// In the example below -> undefined, '', 0 are all falsy values
+console.log(undefined || '' || 0 || 'lol' || 23);
+
+const guests = restaurant.numGuests || 10;
+console.log(guests);
+
+console.log('----------AND-------------');

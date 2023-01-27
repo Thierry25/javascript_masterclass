@@ -92,10 +92,9 @@ console.log(second, third);
       Destructure the title of the second book (The Cyberiad) into a variable called 'title'. */
 console.log('-_____------____------____-----____-----_--');
 console.log(getBooksAsArrays());
-const [, current] = getBooksAsArrays();
-const [nameAndTitle] = current;
-const [, title] = nameAndTitle;
+const [, [[, title]]] = getBooksAsArrays();
 console.log(title);
+
 /* ⚠️ COMMENT OUT YOUR SOLUTIONS AFTER YOU FINISH SO THAT IT DOESN'T COLLIDE WITH NEXT EXERCISES 🠕 */
 
 /*
@@ -116,9 +115,13 @@ console.log(bookTitle);
 /* C) The book objects aren't consistent in their form.
       For example, the second book doesn't have the 'filmAdaptation' property.
       Destructure it into a variable called 'hasFilmAdaptation' with a default value of false. */
+let { filmAdaptation: hasFilmAdaptation = false } = second;
+console.log(hasFilmAdaptation);
 
 /* D) Remember the 'author' variable from exercise A? It's time to reassign it.
       Destructure the author of the third book into existing variable called 'author'. */
+({ author } = third);
+console.log(author);
 
 /* ⚠️ COMMENT OUT YOUR SOLUTIONS AFTER YOU FINISH SO THAT IT DOESN'T COLLIDE WITH NEXT EXERCISES 🠕 */
 
@@ -131,21 +134,32 @@ console.log(bookTitle);
 /* A) The getBookAuthors() function returns an array of authors from the 'books' array.
       Reassign the 'authors' variable below so that it contains both — already existing authors,
       and authors returned from the getBookAuthors() function. Use the spread syntax. */
-let authors = ['George Orwell', 'Aldous Huxley'];
+let authors = ['George Orwell', 'Aldous Huxley', ...getBookAuthors()];
+console.log(...authors);
 
 /* B) The console.log() method can take multiple arguments and log them to the console.
       First, log the 'authors' array as it is (as one argument).
       Second, log the elements of the 'authors' array, but this time use the spread syntax.
       Compare the outputs. */
+console.log(authors);
+console.log(...authors);
 
 /* C) The spread syntax can be used with other iterables, for example, strings.
       Create a new variable called 'firstNameArray', and spread the 'firstName' string
       so that each letter becomes an element of the 'firstNameArray' like ['J', 'o', 'h', 'n']. */
 const firstName = 'John';
+const firstNameArray = [...firstName];
+console.log(firstNameArray);
 
 /* D) Now it's time to spread some objects. Create a new variable called 'cyberiad',
       and assign an object to it. This object should have all the properties of the second book from the 'books' array,
       plus the missing 'filmAdaptation' property set to false. */
+const cyberiad = {
+  review: 'Great',
+  ...second,
+  filmAdaptation: false,
+};
+console.log(cyberiad);
 
 /* ⚠️ COMMENT OUT YOUR SOLUTIONS AFTER YOU FINISH SO THAT IT DOESN'T COLLIDE WITH NEXT EXERCISES 🠕 */
 
@@ -158,7 +172,8 @@ const firstName = 'John';
 /* A) The getBooksByGenre() function returns an array of books based on the genre you pass as the argument.
       Use it to get all 'fantasy' books. Destructure the returned array into two variables — the first one called 'theLordOfTheRings',
       and the second one called 'otherFantasyBooks' (an array containing all other values from the returned array). */
-
+const [theLordOfTheRings, ...otherFantasyBooks] = getBooksByGenre('fantasy');
+console.log(theLordOfTheRings);
 /* B) This time you'll write a function utilizing the power of rest parameters.
       This function named as list() should output a list with a title to the console.
       The first argument it takes is the "title" of the list (string),
@@ -172,6 +187,22 @@ const firstName = 'John';
       3) Pride and Prejudice      <-- list item
       ...
      */
+
+const list = (title, ...items) => {
+  console.log(title);
+  let j = 0;
+  for (let i = 0; i < items.length; i++) {
+    j++;
+    console.log(`${j}) ${items[i]}`);
+  }
+};
+
+list(
+  'My favorite books',
+  'Brave New World',
+  'The Great Gatsby',
+  'Pride and Prejudice'
+);
 
 /* ⚠️ COMMENT OUT YOUR SOLUTIONS AFTER YOU FINISH SO THAT IT DOESN'T COLLIDE WITH NEXT EXERCISES 🠕 */
 
