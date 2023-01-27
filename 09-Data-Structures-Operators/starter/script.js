@@ -198,3 +198,35 @@ restaurant.orderDelivery &&
 // Nullish coalescing operator
 const testValue = 0;
 console.log(testValue ?? 10);
+
+// NEW LOGICAL Operators -> ES2021
+const rest1 = {
+  name: 'Restaurant Lakay',
+  numGuests: 0,
+};
+
+const rest2 = {
+  name: 'Gadon Lavi',
+  owner: 'Thierry Marcelin',
+};
+
+// OR assignment operator
+// rest1.numGuests = rest1.numGuests || 10;
+// rest2.numGuests = rest2.numGuests || 10;
+// IMPORTANT -> NEW WAY ES2021
+// BUG: Will not work if value is 0 (falsy value)
+// rest1.numGuests ||= 10;
+// rest2.numGuests ||= 10;
+
+// NULLISH assignment operator
+rest1.numGuests ??= 10;
+rest2.numGuests ??= 10;
+
+// AND assignment operator
+// rest1.owner = rest1.owner && 'anonymous';
+// rest2.owner = rest2.owner && 'anonymous';
+
+rest1.owner &&= 'anonymous';
+rest2.owner &&= 'anonymous';
+console.log(rest1);
+console.log(rest2);
