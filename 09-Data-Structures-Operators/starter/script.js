@@ -179,3 +179,22 @@ const guests = restaurant.numGuests || 10;
 console.log(guests);
 
 console.log('----------AND-------------');
+// Will output the first falsy value -> in that case undefined
+console.log(undefined && 0 && '' && 'Hello' && 23 && null);
+//  Or If all values are truthy -> Will output the last one of them
+// In that case 'Thierry'
+console.log(7 && 'lol' && true && 'Soccer' && 'Thierry');
+// Should be null -> The first falsy value
+console.log(7 && 'lol' && true && 'Soccer' && null && 'Thierry');
+
+// World Example
+if (restaurant.orderPizza) {
+  restaurant.orderPizza('chicken', 'tomatoes');
+} // CAN BE REPLACED BY ->
+// IMPORTANT
+restaurant.orderDelivery &&
+  restaurant.orderPizza('cheese', 'mushrooms', 'chicken');
+
+// Nullish coalescing operator
+const testValue = 0;
+console.log(testValue ?? 10);
