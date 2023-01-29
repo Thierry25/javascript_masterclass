@@ -282,3 +282,44 @@ const staff = ['Waiter', 'Chef', 'Waiter', 'Manager', 'Chef', 'Waiter'];
 const staffSet = new Set(staff);
 const uniqueStaffPositions = [...new Set(staff)];
 console.log(uniqueStaffPositions);
+
+// NEW-SECTION
+const restaurantMap = new Map();
+restaurantMap.set('name', 'Clasico Italiano');
+restaurantMap.set(1, 'Firenze, Italy');
+restaurantMap.set(2, 'Lisbon, Portugal');
+
+restaurantMap
+  .set('categories', ['Italian', 'Pizzeria', 'Vegetarian', 'Organic'])
+  .set('open', 11)
+  .set('close', 23)
+  .set(true, 'We are open :D')
+  .set(false, 'We are closed');
+
+const time = 21;
+console.log(
+  restaurantMap.get(
+    time > restaurantMap.get('open') && time <= restaurantMap.get('close')
+  )
+);
+
+const question = new Map([
+  ['question', 'What is the best programming language?'],
+  [1, 'C++'],
+  [2, 'Python'],
+  [3, 'Ruby'],
+  [4, 'Java'],
+  [5, 'Javascript'],
+  ['correct', 5],
+  [true, 'Correct 🥳'],
+  [false, 'Try Again 😢'],
+]);
+
+// console.log(question.get('question'));
+let questionName = `${question.get('question')}\n`;
+for (const [key, value] of question) {
+  if (typeof key === 'number') questionName += `Answer ${key}: ${value}\n`;
+}
+
+const userAnswer = Number(prompt(`${questionName} \n\n Your answer?`));
+const message = alert(question.get(question.get('correct') === userAnswer));
