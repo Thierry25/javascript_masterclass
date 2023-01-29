@@ -265,3 +265,20 @@ const entireObject = Object.entries(hours);
 for (const [i, { open, close }] of entireObject) {
   console.log(`On ${i}, we open at ${open}, and close at ${close}`);
 }
+
+const ordersSet = new Set(['Pizza', 'Pasta', 'Pasta', 'Pizza', 'Sandwich']);
+console.log(ordersSet);
+console.log(ordersSet.size);
+console.log(ordersSet.has('Pizza'));
+ordersSet.add('Garlic Bread');
+ordersSet.delete('Pasta');
+console.log(ordersSet);
+
+const newSet = new Set('Thierry');
+console.log(newSet);
+
+const staff = ['Waiter', 'Chef', 'Waiter', 'Manager', 'Chef', 'Waiter'];
+
+const staffSet = new Set(staff);
+const uniqueStaffPositions = [...new Set(staff)];
+console.log(uniqueStaffPositions);
