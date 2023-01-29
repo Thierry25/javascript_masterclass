@@ -30,18 +30,18 @@ const restaurant = {
     },
   },
 
-  orderDelivery: function ({ starterIndex, mainIndex, address, time }) {
+  orderDelivery({ starterIndex, mainIndex, address, time }) {
     console.log(`Order received! ${this.starterMenu[starterIndex]} and 
     ${this.mainMenu[mainIndex]} will be delivered at ${address} at ${time}`);
   },
 
-  orderPasta: function (ing1, ing2, ing3) {
+  orderPasta(ing1, ing2, ing3) {
     console.log(
       `Here is your wonderful Pasta with ${ing1}, ${ing2} and ${ing3}`
     );
   },
 
-  orderPizza: function (mainIngredient, ...otherIngredients) {
+  orderPizza(mainIngredient, ...otherIngredients) {
     console.log(mainIngredient);
     console.log(otherIngredients);
   },
@@ -230,3 +230,25 @@ rest1.owner &&= 'anonymous';
 rest2.owner &&= 'anonymous';
 console.log(rest1);
 console.log(rest2);
+
+// NEW-SECTION
+const fullMenu = [...restaurant.starterMenu, ...restaurant.mainMenu];
+for (const [i, el] of fullMenu.entries()) {
+  console.log(`${i + 1}: ${el}`);
+}
+
+const days = ['mon', 'tue', 'wed', 'thu', 'fri', 'sat', 'sun'];
+for (const day of days) {
+  const open = restaurant.openingHours[day]?.open ?? 'N/A';
+  console.log(`On ${day}, we are open at ${open}`);
+}
+
+const hours1 = {
+  thu: '07:30',
+  fri: '06:25',
+  sat: '11:00',
+};
+
+for (const day of Object.keys(hours1)) {
+  console.log(day);
+}
