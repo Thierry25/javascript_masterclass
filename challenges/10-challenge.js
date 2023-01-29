@@ -82,3 +82,49 @@ printGoals(...game.scored);
 console.log("____------_____");
 console.log(team1 < team2 && game.team1);
 console.log(team2 < team1 && game.team2);
+// ----
+console.log("**************");
+
+// Use of for of array
+for (const player of game.scored) {
+  console.log(player);
+}
+
+const odds = Object.values(game.odds);
+
+// MORE ADVANCED WAY
+// #2
+const sum = odds.reduce((odd1, odd2) => {
+  return odd1 + odd2;
+}, 0);
+
+console.log((sum / odds.length).toFixed(2));
+
+// BEGINNER WAY
+// let sum = 0;
+// for (const odd of odds) {
+//   sum += odd;
+// }
+
+// console.log(sum / odds.length);
+
+// #3
+let message;
+for (const [teamName, val] of Object.entries(game.odds)) {
+  message = game[teamName]
+    ? `Odd of victory ${game[teamName]}: ${val}`
+    : `Odd of draw: ${val}`;
+  console.log(message);
+}
+
+// #4
+
+// scored: ["Lewandowski", "Gnarby", "Lewandowski", "Hummels"];
+
+const scored = {};
+for (const scorer of game.scored) {
+  scored[scorer] &&= scored[scorer] + 1;
+  scored[scorer] ||= 1;
+}
+
+console.log(scored);

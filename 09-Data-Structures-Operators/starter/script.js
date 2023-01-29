@@ -248,7 +248,20 @@ const hours1 = {
   fri: '06:25',
   sat: '11:00',
 };
-
-for (const day of Object.keys(hours1)) {
+// Property NAMES
+const propertyNames = Object.keys(hours1);
+for (const day of propertyNames) {
   console.log(day);
+}
+
+// Property VALUES
+const propertyValues = Object.values(hours1);
+for (const pptVal of propertyValues) {
+  console.log(pptVal);
+}
+
+// Enitre Object
+const entireObject = Object.entries(hours);
+for (const [i, { open, close }] of entireObject) {
+  console.log(`On ${i}, we open at ${open}, and close at ${close}`);
 }
