@@ -223,6 +223,11 @@ list(
       Write a function called 'getTitleInSpanish' that takes a 'book' object as an argument,
       and returns a title in Spanish or a string "No data available" if there is no title in Spanish.
       Using the 'if' statement or the ternary operator is not allowed. */
+const getTitleInSpanish = book => {
+  return book.otherLanguagesTitle.spanish ?? 'No data available';
+};
+console.log('---------------');
+console.log(getTitleInSpanish(books[2]));
 
 /* B) Loop over the 'books' array, and for each book check if it has the title in Spanish and Korean.
       If it's true, log a string "<title> by <author> has title in Spanish and Korean" to the console,
@@ -231,6 +236,13 @@ list(
       Example output:
       "A Game of Thrones by George R. R. Martin has translations in Spanish and Korean."
       */
+for (const curBook of books) {
+  const message =
+    curBook.otherLanguagesTitle?.spanish &&
+    curBook.otherLanguagesTitle?.korean &&
+    `${curBook.title} by ${curBook.author} has title in Spanish and Korean`;
+  console.log(message);
+}
 
 /* C) Loop over the 'books' array, and for each book check if it has the title in Portuguese or Spanish, but not in both.
       If it's true, log a string "<title> by <author> has title in Portuguese or Spanish, but not in both" to the console,
@@ -239,5 +251,14 @@ list(
       Example output:
       "A Game of Thrones by George R. R. Martin has translations in Spanish and Korean."
       */
-
+console.log('____-----');
+for (const currentBook of books) {
+  const message =
+    (currentBook.otherLanguagesTitle?.portuguese &&
+      !currentBook.otherLanguagesTitle?.spanish) ||
+    (currentBook.otherLanguagesTitle?.spanish &&
+      !currentBook.otherLanguagesTitle?.portuguese &&
+      `${currentBook.title} by ${currentBook.author} has title in Portugues or Spanish`);
+  console.log(message);
+}
 /* ⚠️ COMMENT OUT YOUR SOLUTIONS AFTER YOU FINISH SO THAT IT DOESN'T COLLIDE WITH NEXT EXERCISES 🠕 */
