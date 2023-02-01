@@ -341,3 +341,6 @@ console.log(airplane.length);
 console.log(airplane.indexOf('r'));
 // Get the last index of a recurring character
 console.log(airplane.lastIndexOf('r'));
+const testString = 'Thierry Marcelin';
+
+console.log(testString.slice(-2));
