@@ -383,3 +383,21 @@ console.log(priceGB, priceUS);
 
 const annoucement = 'All passengers come to boarding door 23. Boarding door 23';
 console.log(annoucement.replaceAll('door', 'gate'));
+
+//
+const [mainName, ...others_] = 'Daniel Thierry Marcelin'.split(' ');
+console.log(mainName);
+console.log(['Mr', mainName, others_[0].toUpperCase()].join('**'));
+
+//Mini-Challenge
+const capitalizeName = name => {
+  const names = name.split(' ');
+  const upperNames = [];
+  for (const n of names) {
+    // upperNames.push(n[0].toUpperCase() + n.slice(1).toLowerCase());
+    upperNames.push(n.replace(n[0], n[0].toUpperCase()));
+  }
+  return upperNames.join(' ');
+};
+
+console.log(capitalizeName('daniel thierry marcelin'));
