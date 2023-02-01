@@ -323,3 +323,21 @@ for (const [key, value] of question) {
 
 const userAnswer = Number(prompt(`${questionName} \n\n Your answer?`));
 const message = alert(question.get(question.get('correct') === userAnswer));
+
+// NEW-SECTION
+// Working with Strings
+
+const airplane = 'TAP Air Portugal';
+const plane = 'A320';
+
+console.log(plane[0]);
+console.log(plane[1]);
+console.log(plane[2]);
+console.log(plane[3]);
+
+// Methods on strings
+console.log(airplane.length);
+// Get the index of a certain character
+console.log(airplane.indexOf('r'));
+// Get the last index of a recurring character
+console.log(airplane.lastIndexOf('r'));
