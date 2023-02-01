@@ -344,3 +344,42 @@ console.log(airplane.lastIndexOf('r'));
 const testString = 'Thierry Marcelin';
 
 console.log(testString.slice(-2));
+
+// Mini-Challenge
+const middleSeat = function (seat) {
+  // Given a seat we need to know if the passenger is in middle seat or not
+  const lastLetter = seat.slice(-1);
+  return lastLetter === 'B' || lastLetter === 'E';
+};
+
+console.log(middleSeat('11B'));
+
+// Mini-Challenge
+// Create a function that will take in any string and convert it to a capitalized String
+// Ex -> ThIErry => Thierry
+const correctString = value => {
+  const newVal = value.toLowerCase();
+  return newVal[0].toUpperCase() + newVal.slice(1);
+};
+
+// Mini-Challenge
+// Create a function that will verify if two emails are the same
+const sameEmails = (email, confirmationEmail) => {
+  const result =
+    email.toLowerCase().trim() === confirmationEmail.toLowerCase().trim();
+  return result && 'The emails are identical';
+};
+
+console.log(
+  sameEmails('     marCELINthierRy@gmail.com \n\t', 'marcelinthierry@gmail.com')
+);
+
+console.log(correctString('ThIErry'));
+
+// Replacing characters or strings within strings
+const priceGB = '235,4￡';
+const priceUS = priceGB.replace('￡', '$').replace(',', '.');
+console.log(priceGB, priceUS);
+
+const annoucement = 'All passengers come to boarding door 23. Boarding door 23';
+console.log(annoucement.replaceAll('door', 'gate'));
