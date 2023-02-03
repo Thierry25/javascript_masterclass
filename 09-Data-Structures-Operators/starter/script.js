@@ -394,7 +394,7 @@ const capitalizeName = name => {
   const names = name.split(' ');
   const upperNames = [];
   for (const n of names) {
-    // upperNames.push(n[0].toUpperCase() + n.slice(1).toLowerCase());
+    upperNames.push(n[0].toUpperCase() + n.slice(1).toLowerCase());
     upperNames.push(n.replace(n[0], n[0].toUpperCase()));
   }
   return upperNames.join(' ');
