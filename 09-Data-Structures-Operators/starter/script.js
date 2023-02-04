@@ -408,3 +408,4 @@ console.log(capitalizeName('daniel thierry marcelin'));
 // Use of padStart
 // Add additional characters to match suggested length
 console.log('Thierry'.padStart(20, '-'));
+console.log('Jospg'.padEnd(20, '*'));
