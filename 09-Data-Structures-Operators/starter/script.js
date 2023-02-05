@@ -409,3 +409,13 @@ console.log(capitalizeName('daniel thierry marcelin'));
 // Add additional characters to match suggested length
 console.log('Thierry'.padStart(20, '-'));
 console.log('Jospg'.padEnd(20, '*'));
+
+// Mini-Challenge
+// Create a method that will mask the first 10 digits of a credit/debit card with *
+
+const cardMask = cardNumber => {
+  const number = cardNumber + '';
+  return number.slice(-4).padStart(number.length, '*');
+};
+
+console.log(cardMask(4803396578839828));
