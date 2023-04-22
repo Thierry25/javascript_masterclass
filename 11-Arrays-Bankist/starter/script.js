@@ -61,9 +61,12 @@ const inputLoanAmount = document.querySelector('.form__input--loan-amount');
 const inputCloseUsername = document.querySelector('.form__input--user');
 const inputClosePin = document.querySelector('.form__input--pin');
 
-const displayMovements = function (movements) {
+const displayMovements = function (movements, sort = false) {
   containerMovements.innerHTML = '';
-  movements.forEach((mov, i) => {
+
+  const movs = sort ? movements.slice().sort((a, b) => a - b) : movements;
+
+  movs.forEach((mov, i) => {
     const type = mov > 0 ? 'deposit' : 'withdrawal';
     const html = `
      <div class="movements__row">
@@ -212,6 +215,13 @@ btnClose.addEventListener('click', function (e) {
     containerApp.style.opacity = 0;
     inputCloseUsername.value = inputClosePin.value = '';
   }
+});
+let sorted = false;
+btnSort.addEventListener('click', function (e) {
+  e.preventDefault();
+
+  displayMovements(currentAccount.movements, !sorted);
+  sorted = !sorted;
 });
 /////////////////////////////////////////////////
 /////////////////////////////////////////////////
@@ -362,3 +372,98 @@ const overallBalance2 = accounts
   .flatMap(acc => acc.movements)
   .reduce((acc, mov) => acc + mov, 0);
 console.log(overallBalance);
+
+// Sort
+const owners = ['Jonas', 'Zach', 'Adam', 'Martha'];
+console.log(owners.sort());
+
+// Sort numbers
+// return < 0 A, B (keep order)
+// return > 0, B, A (switch order)
+movements.sort((a, b) => a - b);
+console.log(movements);
+
+// Desceding order
+movements.sort((a, b) => b - a);
+console.log(movements);
+
+// Fill
+const aix = [1, 2, 3, 4, 5, 6, 7];
+const x = new Array(7); // Empty arr of size 7
+console.log(x);
+
+x.fill(5); // put 5 in the whole array
+console.log(x);
+x.fill(1, 3); // put 1 from index 3 to end
+console.log(x);
+x.fill(2, 0, 4); // put 2 from index 0 to index 4
+console.log(x);
+
+// Task 1- Create an array of length 7 of 1
+const seven = Array.from({ length: 7 }, () => 1);
+console.log(seven);
+
+// Task 2 - Create an array of the first 15 prime numbers
+const z = Array.from({ length: 7 }, (_, i) => i + 1);
+console.log(z);
+
+labelBalance.addEventListener('click', function () {
+  const movementsUI = Array.from(
+    document.querySelectorAll('.movements__value'),
+    el => Number(el.textContent.replace('€', ''))
+  );
+  console.log(movementsUI);
+});
+
+// Practice
+// 1. Calculate the total money that is available in the bank rn
+console.log(
+  accounts
+    .flatMap(acc => acc.movements)
+    .filter(val => val > 0)
+    .reduce((acc, val) => acc + val, 0)
+);
+
+// 2. Count how many deposits there have been in the bank that were at least 1000
+console.log(
+  accounts.flatMap(acc => acc.movements).filter(val => val >= 1000).length
+);
+
+console.log(
+  accounts
+    .flatMap(acc => acc.movements)
+    .reduce((acc, val) => (val >= 1000 ? acc + 1 : acc), 0)
+);
+
+// 3. Create a new object that contains the sum of all the sums and withdrawals all in the same go using reduce
+const sums = accounts
+  .flatMap(acc => acc.movements)
+  .reduce(
+    (acc, cur) => {
+      // cur > 0 ? (acc.sums += cur) : (acc.withdrawals += cur);
+      acc[cur > 0 ? 'sums' : 'withdrawals'] += cur;
+      return acc;
+    },
+    { sums: 0, withdrawals: 0 }
+  );
+
+console.log(sums);
+
+// 4. Convert any string into a title case, but with some exceptions
+
+const convertToTitle = word => {
+  if (word.length > 1)
+    return `${word.at(0).toUpperCase()}${word.substring(1).toLowerCase()}`;
+  else return word.toUpperCase();
+};
+const convertTitleCase = function (title) {
+  const exceptions = ['a', 'an', 'the', 'but', 'or', 'on', 'in', 'with'];
+  return title
+    .split(' ')
+    .map(word => (exceptions.includes(word) ? word : convertToTitle(word)))
+    .join(' ');
+};
+
+console.log(convertTitleCase('this is a nice title'));
+console.log(convertTitleCase('this is a LONG title but not too long'));
+console.log(convertTitleCase('and here is another title with an EXAMPLE'));
